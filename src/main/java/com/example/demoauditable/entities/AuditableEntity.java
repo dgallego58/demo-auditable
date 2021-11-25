@@ -2,8 +2,8 @@ package com.example.demoauditable.entities;
 
 public interface AuditableEntity {
 
-    AuditablePart getAuditablePart();
+    Auditable getAuditable();
 
-    void setAuditablePart(AuditablePart auditablePart);
+    void setAuditable(Auditable auditable);
 
 }

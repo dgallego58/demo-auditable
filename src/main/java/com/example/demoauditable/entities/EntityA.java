@@ -62,4 +62,13 @@ public class EntityA {
         this.dateUpdated = dateUpdated;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "(" +
+                "uuid = " + uuid + ", " +
+                "randomAtt = " + randomAtt + ", " +
+                "dateCreated = " + dateCreated + ", " +
+                "dateUpdated = " + dateUpdated + ")";
+    }
 }

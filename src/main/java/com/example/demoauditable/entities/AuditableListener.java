@@ -9,17 +9,17 @@ public class AuditableListener {
 
     @PrePersist
     public void setCreatedOn(AuditableEntity auditableEntity) {
-        AuditablePart auditablePart = auditableEntity.getAuditablePart();
-        if (auditablePart == null) {
-            auditablePart = new AuditablePart();
-            auditableEntity.setAuditablePart(auditablePart);
+        Auditable auditable = auditableEntity.getAuditable();
+        if (auditable == null) {
+            auditable = new Auditable();
+            auditableEntity.setAuditable(auditable);
         }
-        auditablePart.setDateCreated(Instant.now());
-        auditablePart.setDateUpdated(Instant.now());
+        auditable.setDateCreated(Instant.now());
+        auditable.setDateUpdated(Instant.now());
     }
 
     @PreUpdate
     public void setUpdatedOn(AuditableEntity auditableEntity) {
-        auditableEntity.getAuditablePart().setDateUpdated(Instant.now());
+        auditableEntity.getAuditable().setDateUpdated(Instant.now());
     }
 }

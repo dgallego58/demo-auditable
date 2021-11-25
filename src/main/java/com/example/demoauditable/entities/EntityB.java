@@ -1,7 +1,5 @@
 package com.example.demoauditable.entities;
 
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -10,8 +8,8 @@ import javax.persistence.Id;
 import java.util.UUID;
 
 @Entity
-//@EntityListeners(AuditableListener.class)
-@EntityListeners(AuditingEntityListener.class) //doesn't work for embedded
+@EntityListeners(AuditableListener.class) //this works with embedded
+//@EntityListeners(AuditingEntityListener.class) //doesn't work for embedded
 public class EntityB implements AuditableEntity{
 
     @Id
@@ -21,7 +19,7 @@ public class EntityB implements AuditableEntity{
     private String randomAtt;
 
     @Embedded
-    private AuditablePart auditablePart;
+    private Auditable auditable;
 
     public UUID getUuid() {
         return uuid;
@@ -42,12 +40,20 @@ public class EntityB implements AuditableEntity{
     }
 
     @Override
-    public void setAuditablePart(AuditablePart auditablePart) {
-        this.auditablePart = auditablePart;
+    public void setAuditable(Auditable auditable) {
+        this.auditable = auditable;
     }
 
     @Override
-    public AuditablePart getAuditablePart() {
-        return auditablePart;
+    public Auditable getAuditable() {
+        return auditable;
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "(" +
+                "uuid = " + uuid + ", " +
+                "randomAtt = " + randomAtt + ", " +
+                "auditablePart = " + auditable + ")";
     }
 }

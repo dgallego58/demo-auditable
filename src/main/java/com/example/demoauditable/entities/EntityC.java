@@ -59,4 +59,13 @@ public class EntityC {
         this.updatedAt = updatedAt;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "(" +
+                "uuid = " + uuid + ", " +
+                "randomAtt = " + randomAtt + ", " +
+                "createdAt = " + createdAt + ", " +
+                "updatedAt = " + updatedAt + ")";
+    }
 }

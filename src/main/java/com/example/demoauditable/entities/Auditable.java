@@ -7,7 +7,7 @@ import javax.persistence.Embeddable;
 import java.time.Instant;
 
 @Embeddable
-public class AuditablePart {
+public class Auditable {
 
     @CreatedDate //-> doesnt work with @EntityListeners(AuditingEntityListener.class)
     private Instant dateCreated;
@@ -19,7 +19,7 @@ public class AuditablePart {
         return dateCreated;
     }
 
-    public AuditablePart setDateCreated(Instant dateCreated) {
+    public Auditable setDateCreated(Instant dateCreated) {
         this.dateCreated = dateCreated;
         return this;
     }
@@ -28,8 +28,15 @@ public class AuditablePart {
         return dateUpdated;
     }
 
-    public AuditablePart setDateUpdated(Instant dateUpdated) {
+    public Auditable setDateUpdated(Instant dateUpdated) {
         this.dateUpdated = dateUpdated;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "(" +
+                "dateCreated = " + dateCreated + ", " +
+                "dateUpdated = " + dateUpdated + ")";
     }
 }
