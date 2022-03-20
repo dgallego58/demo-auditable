@@ -1,5 +1,7 @@
 package com.example.demoauditable.entities;
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -8,8 +10,8 @@ import javax.persistence.Id;
 import java.util.UUID;
 
 @Entity
-@EntityListeners(AuditableListener.class) //this works with embedded
-//@EntityListeners(AuditingEntityListener.class) //doesn't work for embedded
+//@EntityListeners(AuditableListener.class) //this works with embedded
+@EntityListeners(AuditingEntityListener.class) //doesn't work for embedded
 public class EntityB implements AuditableEntity{
 
     @Id
